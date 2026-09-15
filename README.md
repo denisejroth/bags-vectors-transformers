@@ -6,6 +6,12 @@ A four-day, hands-on introduction to computational text analysis in Python, for 
 students. The course runs from classic bag-of-words methods all the way to large language
 models, with a working notebook for every topic.
 
+## Prerequisites
+
+Basic Python, roughly at the level of an introductory DataCamp course (variables, lists,
+loops, functions). No prior experience with text analysis is assumed — the course starts
+from the beginning.
+
 **Instructor:** Denise J. Roth · Strategic Communication Group · Wageningen University & Research
 
 ---
@@ -62,18 +68,6 @@ access:
 - **`dreamproit/bill_labels_us`** — US Congressional bills labeled by policy area (public domain)
 - Pre-trained **GloVe** vectors and small open models from the **Hugging Face Hub**
 
-## Setup for instructors
-
-Each notebook has an **"Open in Colab"** badge at the top. These point at a placeholder path
-(`YOUR-USERNAME/bags-vectors-transformers`). After you create the GitHub repository, do a
-find-and-replace across the notebooks to swap in your actual `username/repo` (and branch, if
-not `main`) so the badges open the right files.
-
-## Prerequisites
-
-Basic Python, roughly at the level of an introductory DataCamp course (variables, lists,
-loops, functions). No prior experience with text analysis is assumed — the course starts
-from the beginning.
 
 ## License
 
