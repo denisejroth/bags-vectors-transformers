@@ -1,0 +1,23 @@
+# Bags, Vectors & Transformers — Python dependencies
+# The notebooks are designed for Google Colab, where most of these are pre-installed.
+# For a local setup, Python 3.10+ is recommended. Install with:
+#     pip install -r requirements.txt
+
+# Core
+numpy
+pandas
+matplotlib
+scikit-learn
+
+# Text analysis (Days 1–2)
+nltk
+gensim
+wordcloud
+
+# Datasets
+datasets
+
+# Transformers & LLMs (Days 3–4) — a GPU is strongly recommended
+torch
+transformers
+accelerate
