@@ -1,0 +1,93 @@
+\documentclass[aspectratio=169]{beamer}
+
+% ── Packages ────────────────────────────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, calc, shapes.geometric, decorations.pathreplacing, matrix}
+\usepackage{booktabs}
+\usepackage{fontawesome5}
+\usepackage{array}
+\usepackage[most]{tcolorbox}
+
+% ── WUR color palette ───────────────────────────────────────────────────────
+\definecolor{wurgreen}{HTML}{34B233}
+\definecolor{darkgreen}{HTML}{1F6B1E}
+\definecolor{lightgreen}{HTML}{E8F7E8}
+\definecolor{darknavy}{HTML}{1A1A2E}
+\definecolor{midgray}{HTML}{6B7280}
+\definecolor{lightgray}{HTML}{F3F4F6}
+\definecolor{bodytext}{HTML}{1F2937}
+\definecolor{codegreen}{HTML}{9AE6B4}
+\definecolor{warnred}{HTML}{FEE2E2}
+\definecolor{warnborder}{HTML}{EF4444}
+
+% ── Beamer theme ────────────────────────────────────────────────────────────
+\usetheme{default}
+\usecolortheme{default}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}{\textcolor{wurgreen}{\textbullet}}
+\setbeamertemplate{itemize subitem}{\textcolor{midgray}{--}}
+\setbeamertemplate{enumerate items}{\textcolor{wurgreen}{\textbf{\insertenumlabel.}}}
+\setbeamercolor{frametitle}{fg=white, bg=darknavy}
+\setbeamertemplate{frametitle}{%
+  \begin{beamercolorbox}[wd=\paperwidth, ht=1.1cm, dp=0.2cm, leftskip=0.6cm]{frametitle}
+    \usebeamerfont{frametitle}\insertframetitle
+  \end{beamercolorbox}%
+}
+\setbeamerfont{frametitle}{size=\large, series=\bfseries}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{fg=bodytext}
+\setbeamerfont{normal text}{size=\small}
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\paperwidth, ht=0.4cm, dp=0.15cm]{footline}%
+    \hspace{0.5cm}%
+    \textcolor{midgray}{\tiny Bags, Vectors \& Transformers · Bonus · Wageningen University \& Research}%
+    \hfill%
+    \textcolor{midgray}{\tiny \insertframenumber}%
+    \hspace{0.4cm}%
+  \end{beamercolorbox}%
+}
+
+% ── Boxes ───────────────────────────────────────────────────────────────────
+\tcbset{wurbase/.style={arc=3pt, boxrule=0.6pt, left=7pt, right=7pt, top=5pt, bottom=5pt,
+                        fontupper=\small, before skip=4pt, after skip=4pt}}
+\newtcolorbox{greenbox}[1][]{wurbase, colback=lightgreen, colframe=wurgreen, #1}
+\newtcolorbox{graybox}[1][]{wurbase, colback=lightgray, colframe=lightgray, #1}
+\newtcolorbox{navybox}[1][]{wurbase, colback=darknavy, colframe=darknavy, colupper=white, #1}
+\newtcolorbox{warnbox}[1][]{wurbase, colback=warnred, colframe=warnborder, #1}
+\newtcolorbox{codebox}[1][]{wurbase, colback=darknavy, colframe=darknavy, colupper=white,
+                            fontupper=\ttfamily\scriptsize, left=6pt, top=4pt, bottom=4pt, #1}
+
+% ── Title slide ─────────────────────────────────────────────────────────────
+\newcommand{\bonustitle}[1]{%
+{
+\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[darknavy] (current page.south west) rectangle (current page.north east);
+    \fill[wurgreen] (current page.south west) rectangle ([xshift=0.45cm]current page.north west);
+    \node[anchor=west, text=white, font=\huge\bfseries, text width=13cm]
+      at ([xshift=1.1cm, yshift=1.2cm]current page.west) {Bags, Vectors \& Transformers};
+    \node[anchor=west, text=wurgreen, font=\large, text width=13cm]
+      at ([xshift=1.1cm, yshift=0.05cm]current page.west) {#1};
+    \node[anchor=west, text=midgray, font=\small, text width=12cm]
+      at ([xshift=1.1cm, yshift=-1.5cm]current page.west)
+      {Denise J. Roth, PhD Candidate\\
+       Strategic Communication Group · Wageningen University \& Research};
+  \end{tikzpicture}
+\end{frame}
+}}
+
+% ── Small helpers ───────────────────────────────────────────────────────────
+\newcommand{\keyterm}[1]{\textbf{\textcolor{darkgreen}{#1}}}
+\newcommand{\muted}[1]{\textcolor{midgray}{#1}}
+\newcommand{\notebookslide}[1]{%
+\begin{frame}{In the Notebook}
+\vspace{0.1cm}
+#1
+\end{frame}}
