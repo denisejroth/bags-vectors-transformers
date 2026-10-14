@@ -1,0 +1,32 @@
+# macOS and Windows clutter
+.DS_Store
+Thumbs.db
+
+# Jupyter's autosave copies
+.ipynb_checkpoints/
+
+# Python caches and virtual environments
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secrets: API keys and passwords (e.g. an OpenRouter key)
+.env
+
+# LaTeX build file
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.synctex.gz
+
+# Models and checkpoints saved by the notebooks when run locally
+bert-policy*/
+tmp-run/
+
+# Editor settings
+.vscode/
+.idea/
