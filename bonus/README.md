@@ -59,9 +59,7 @@ on what that session leaves for later: validation, stability and the choices tha
 
 ## Slides
 
-`slides/` has a PDF and the LaTeX source of each deck. To recompile a deck, keep `preamble.tex` in the
-same folder and run `pdflatex` twice.
-
+`slides/` has a PDF of each deck. 
 ## Notebooks
 
 Open any notebook in Colab with the button at its top. For modules 2 and 9, enable a GPU first
