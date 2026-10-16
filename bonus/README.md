@@ -50,19 +50,52 @@ on what that session leaves for later: validation, stability and the choices tha
 |---|---|---|---|
 | 13 | **Scaling Up and Reproducibility** | pinning packages, models and data; seeds; project structure; caching; chunked and resumable jobs; from notebook to script; SLURM job arrays; git, Zenodo and a reproducibility checklist | no |
 
+## Beyond classification with LLMs
+
+| # | Module | What you'll learn | GPU? |
+|---|---|---|---|
+| 14 | **Scaling Texts with Pairwise Comparisons** | degrees instead of categories; direct ratings from the model's probabilities; pairwise comparisons in both orders and position bias; Bradley–Terry scaling; validation against crowd toxicity scores; how many comparisons; anchoring new texts | yes |
+| 15 | **Information Extraction with an LLM** | records instead of labels; a schema as codebook; free-form JSON versus structured outputs in Ollama; grounding checks for every quote; recall and hand checks; who gets quoted in BBC political news | yes |
+| 16 | **Themes and Span Coding** | BERTopic to discover themes, an LLM to name them, a codebook you control; span coding of exact passages; highlighting; word-level agreement and prompt sensitivity; themes across 60 inaugural addresses | yes |
+| 18 | **Fine-Tuning an LLM** | when fine-tuning an LLM is worth it; LoRA and QLoRA; training conversations with the prompt masked out; fine-tuning Qwen2.5 0.5B on the bill titles; prompted vs. few-shot vs. fine-tuned; how much data you need; side effects; saving and sharing adapters | yes |
+| 19 | **Synthetic Data and Augmentation with LLMs** | what synthetic data is (and isn't) for; augmenting 40 coded titles with LLM paraphrases; synthetic titles from definitions and with real examples; comparing classifiers on the same real test set; checks for diversity, realism, label quality and leakage; temperature, rare categories and memorized titles; risks and reporting | yes |
+
+These modules build on Day 4 (prompting, label scoring, validation) and use small open models that run
+on Colab's free GPU: Qwen2.5 1.5B through Hugging Face in modules 14 and 19, Qwen2.5 7B through Ollama
+in modules 15 and 16, and Qwen2.5 0.5B with LoRA in module 18. Module 16 starts from the BERTopic workflow
+of module 11 and reuses the structured outputs of module 15, but works on its own. Modules 18 and 19 use
+the same bill titles and test set as Day 4, so their results compare directly with the prompting
+strategies there and with fine-tuned BERT on Day 3. Module 19 turns the question around: instead of
+using an LLM to code texts, it uses one to write extra training texts, and asks when that helps.
+
+## Beyond English
+
+| # | Module | What you'll learn | GPU? |
+|---|---|---|---|
+| 17 | **Working with Other Languages** | three routes (a model for your language, a multilingual model, translation first); tokenizer costs across nine parallel languages; RobBERT vs. XLM-R for Dutch; cross-lingual transfer; translate-test and translate-train with NLLB-200; low-resource languages; language identification in mixed corpora; comparability across languages; multilingual embeddings | yes |
+
+Module 17 uses SIB-200: the same sentences in more than 200 languages, so every comparison between
+languages is fair. It runs nine of them, from English and Dutch to Limburgish, Yoruba and Quechua.
+
 ## Some routes through the material
 
 - **Working with interviews:** 2 (transcribe) → 4 (anonymize) → 5 (code and validate)
 - **Building a corpus:** 1 (files) and 3 (web) → 13 (at scale)
 - **Measurement for a causal analysis:** 5 (validation) → 12 (causal inference with text)
 - **Understanding what BERT replaced:** 6 → 7 → 8, then back to Day 3
+- **LLMs for measurement:** Day 4 → 14 (scales) → 15 (records) → 16 (themes and spans), with 5 for validation
+- **Prompting, distilling or fine-tuning:** Day 3 (BERT) → Day 4 (prompting, distillation) → 18 (fine-tuning an LLM)
+- **From exploring to measuring:** 11 (topics) → 16 (from topics to a codebook and spans)
+- **Comparative and multilingual research:** 1 or 3 (collect) → 17 (languages) → 5 (validate in every language)
+- **When coded data is scarce:** 5 (how many to annotate) → Day 4 (distillation) → 19 (synthetic training data) → 18 (fine-tuning)
 
 ## Slides
 
-`slides/` has a PDF of each deck. 
+`slides/` has a PDF of each deck.
+
 ## Notebooks
 
-Open any notebook in Colab with the button at its top. For modules 2 and 9, enable a GPU first
+Open any notebook in Colab with the button at its top. For modules 2, 9 and 14 to 19, enable a GPU first
 (*Runtime → Change runtime type → T4 GPU*); module 11 runs fine without one.
 
 A few modules need something extra:
@@ -74,3 +107,15 @@ A few modules need something extra:
   takes a minute.
 - **Module 9** downloads pre-trained image weights; **modules 6 to 8 and 11** download two chunks of the
   bills dataset, as on Day 3.
+- **Module 14** downloads Qwen2.5 1.5B and the Civil Comments validation split. ⚠️ The comments are real
+  and include insults and profanity; the notebook leaves out identity attacks, threats and sexual content.
+- **Modules 15 and 16** install Ollama in Colab and download Qwen2.5 7B (4.7 GB); together that takes a few
+  minutes. Module 16 also downloads a sentence transformer and NLTK's inaugural addresses. No accounts or
+  API keys are needed for any of the three.
+- **Module 17** downloads several models (RobBERT, XLM-RoBERTa, NLLB-200, two sentence transformers and
+  GlotLID, about 5 GB in total) and nine languages of SIB-200. NLLB-200's license allows research use
+  only.
+- **Module 18** downloads Qwen2.5 0.5B and two chunks of the bills dataset; fine-tuning takes a few
+  minutes on a T4.
+- **Module 19** downloads Qwen2.5 1.5B and two chunks of the bills dataset; generating the paraphrases
+  and synthetic titles takes about ten minutes on a T4.
